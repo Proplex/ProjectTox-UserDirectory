@@ -1,15 +1,12 @@
 <?php
-/* Horribly inefficient at the moment; it'll be improved as time goes on */
-
-$db="******";
-$conn=mysql_connect("******", "******", "******");
-$db=mysql_select_db($db,$conn);
+include ('*');
 $id = $_GET["id"];
-$id = mysql_real_escape_string($id); 
+$id = mysql_real_escape_string($id);
+if($id=="")include 'empty.html';
 $result=mysql_query("select * from (redacted) where keyword='$id'");
 $row=mysql_fetch_array($result);
 $content = $row['url'];
-$name = $row['keyword'];
+$name = $row['title'];
 $pubkey = preg_replace ( '#^[^:/.]{2,6}[:/]{1,3}#i', '', $content );
 $pubkey = strtoupper($pubkey); 
 $url = $row['url'];
