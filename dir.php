@@ -1,5 +1,5 @@
-<?php 
-include 'users.php'; 
+<?php
+include 'users.php';
 ?>
 <html lang="en">
 <head>

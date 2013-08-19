@@ -1,9 +1,17 @@
 <?php
-include ('*');
 $id = $_GET["id"];
 $id = mysql_real_escape_string($id);
-if($id=="")include 'empty.html';
+if($id=="") {
+require_once ('none.html');
+die; }
+include(*);
+$id = $_GET["id"];
+$id = mysql_real_escape_string($id);
 $result=mysql_query("select * from (redacted) where keyword='$id'");
+$empty = mysql_num_rows($result);
+if ($empty < 1){ 
+require_once ('none.html');
+die; }
 $row=mysql_fetch_array($result);
 $content = $row['url'];
 $name = $row['title'];
